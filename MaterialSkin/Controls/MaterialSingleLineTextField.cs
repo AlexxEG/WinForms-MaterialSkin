@@ -122,12 +122,14 @@ namespace MaterialSkin.Controls
 
             public BaseTextBox()
             {
-                ContextMenuStrip = new TextBoxContextMenuStrip();
-                ContextMenuStrip.Opening += ContextMenuStripOnOpening;
-                ContextMenuStrip.ItemClicked += ContextMenuStripOnItemClicked;
+                MaterialContextMenuStrip cms =  new TextBoxContextMenuStrip();
+                cms.Opening += ContextMenuStripOnOpening;
+                cms.OnItemClickStart += ContextMenuStripOnItemClickStart;
+
+                ContextMenuStrip = cms;
             }
 
-            private void ContextMenuStripOnItemClicked(object sender, ToolStripItemClickedEventArgs toolStripItemClickedEventArgs)
+            private void ContextMenuStripOnItemClickStart(object sender, ToolStripItemClickedEventArgs toolStripItemClickedEventArgs)
             {
                 switch (toolStripItemClickedEventArgs.ClickedItem.Text)
                 {
